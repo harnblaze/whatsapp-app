@@ -1,5 +1,5 @@
 import React, { FC, FormEvent, useState } from "react";
-import { sendMessage } from "../../store/slices/chatSlice";
+import { sendMessage } from "../../store/slices/messageSlice";
 import Button from "../common/Button";
 import Input from "../common/Input";
 import Container from "../common/Container";
