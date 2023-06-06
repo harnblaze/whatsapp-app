@@ -1,4 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { AppDispatch } from "../index";
+import GreenAPI from "../../services/greenAPI";
 
 const initialState = {
   idInstance: "" as string,
@@ -19,5 +21,14 @@ const userSlice = createSlice({
 });
 
 export const { setCredentials } = userSlice.actions;
+
+export const signIn =
+  (idInstance: string, apiTokenInstance: string) =>
+  async (dispatch: AppDispatch) => {
+    const data = await GreenAPI.authorization(idInstance, apiTokenInstance);
+    if (data.stateInstance === "authorized") {
+      dispatch(setCredentials({ idInstance, apiTokenInstance }));
+    }
+  };
 
 export default userSlice.reducer;

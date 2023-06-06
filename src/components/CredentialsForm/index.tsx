@@ -1,5 +1,5 @@
 import React, { FormEvent, useState } from "react";
-import { setCredentials } from "../../store/slices/userSlice";
+import { signIn } from "../../store/slices/userSlice";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import Input from "../common/Input";
 import Button from "../common/Button";
@@ -15,7 +15,7 @@ const CredentialsForm = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (idInstance && apiTokenInstance) {
-      dispatch(setCredentials({ idInstance, apiTokenInstance }));
+      dispatch(signIn(idInstance, apiTokenInstance));
       setIdInstance("");
       setApiTokenInstance("");
     }
