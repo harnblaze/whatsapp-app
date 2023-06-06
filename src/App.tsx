@@ -1,10 +1,10 @@
-import React from 'react';
-
+import React from "react";
+import Index from "./components/CredentialsForm";
 
 function App() {
   return (
     <div className="App">
-      <h1>APP</h1>
+      <Index />
     </div>
   );
 }
