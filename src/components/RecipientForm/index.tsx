@@ -1,15 +1,14 @@
 import React, { FormEvent, useState } from "react";
-import { useDispatch } from "react-redux";
 import { createChat } from "../../store/slices/chatSlice";
 import Input from "../common/Input";
 import Button from "../common/Button";
 import Title from "../common/Title";
 import Container from "../common/Container";
-
-import styles from "./RecipientForm.module.css";
+import Form from "../common/Form";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
 
 const RecipientForm = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [recipientNumber, setRecipientNumber] = useState("");
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -23,7 +22,7 @@ const RecipientForm = () => {
   return (
     <Container>
       <Title>Create New Chat</Title>
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <Input
           placeholder="Recipient Number"
           value={recipientNumber}
@@ -31,7 +30,7 @@ const RecipientForm = () => {
           required
         />
         <Button>Create Chat</Button>
-      </form>
+      </Form>
     </Container>
   );
 };

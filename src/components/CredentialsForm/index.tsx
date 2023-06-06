@@ -5,8 +5,7 @@ import Input from "../common/Input";
 import Button from "../common/Button";
 import Title from "../common/Title";
 import Container from "../common/Container";
-
-import styles from "./CredentialsForm.module.css";
+import Form from "../common/Form";
 
 const CredentialsForm = () => {
   const dispatch = useAppDispatch();
@@ -25,7 +24,7 @@ const CredentialsForm = () => {
   return (
     <Container>
       <Title>WhatsApp Web</Title>
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <Input
           placeholder="ID Instance"
           value={idInstance}
@@ -39,7 +38,7 @@ const CredentialsForm = () => {
           required
         />
         <Button>Log In</Button>
-      </form>
+      </Form>
     </Container>
   );
 };
