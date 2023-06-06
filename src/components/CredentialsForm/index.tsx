@@ -1,7 +1,12 @@
 import React, { FormEvent, useState } from "react";
 import { setCredentials } from "../../store/slices/userSlice";
-import classes from "./CredentialsForm.module.css";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
+import Input from "../common/Input";
+import Button from "../common/Button";
+import Title from "../common/Title";
+import Container from "../common/Container";
+
+import styles from "./CredentialsForm.module.css";
 
 const CredentialsForm = () => {
   const dispatch = useAppDispatch();
@@ -18,30 +23,24 @@ const CredentialsForm = () => {
   };
 
   return (
-    <div className={classes.container}>
-      <h1 className={classes.title}>WhatsApp Web</h1>
-      <form className={classes.form} onSubmit={handleSubmit}>
-        <input
-          type="text"
+    <Container>
+      <Title>WhatsApp Web</Title>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <Input
           placeholder="ID Instance"
-          className={classes.input}
           value={idInstance}
           onChange={(e) => setIdInstance(e.target.value)}
           required
         />
-        <input
-          type="text"
+        <Input
           placeholder="API Token Instance"
-          className={classes.input}
           value={apiTokenInstance}
           onChange={(e) => setApiTokenInstance(e.target.value)}
           required
         />
-        <button type="submit" className={classes.submitButton}>
-          Log In
-        </button>
+        <Button>Log In</Button>
       </form>
-    </div>
+    </Container>
   );
 };
 

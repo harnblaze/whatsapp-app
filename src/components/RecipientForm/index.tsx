@@ -1,6 +1,11 @@
 import React, { FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
-import { createChat } from "../../store/slices//chatSlice";
+import { createChat } from "../../store/slices/chatSlice";
+import Input from "../common/Input";
+import Button from "../common/Button";
+import Title from "../common/Title";
+import Container from "../common/Container";
+
 import styles from "./RecipientForm.module.css";
 
 const RecipientForm = () => {
@@ -16,22 +21,18 @@ const RecipientForm = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>Create New Chat</h2>
+    <Container>
+      <Title>Create New Chat</Title>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <input
-          type="text"
+        <Input
           placeholder="Recipient Number"
-          className={styles.input}
           value={recipientNumber}
           onChange={(e) => setRecipientNumber(e.target.value)}
           required
         />
-        <button type="submit" className={styles.submitButton}>
-          Create Chat
-        </button>
+        <Button>Create Chat</Button>
       </form>
-    </div>
+    </Container>
   );
 };
 
