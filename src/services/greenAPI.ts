@@ -64,10 +64,11 @@ const getNotification = async (
 
 const deleteNotification = async (
   idInstance: string,
-  apiTokenInstance: string
+  apiTokenInstance: string,
+  receiptId: string
 ) => {
-  const response = await axios.get(
-    `https://api.green-api.com/waInstance${idInstance}/ReceiveNotification/${apiTokenInstance}`
+  const response = await axios.delete(
+    `https://api.green-api.com/waInstance${idInstance}/DeleteNotification/${apiTokenInstance}/${receiptId}`
   );
   return response.data;
 };

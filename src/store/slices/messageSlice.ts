@@ -56,18 +56,28 @@ export const getMessage =
     try {
       const data = await GreenAPI.getNotification(idInstance, apiTokenInstance);
       if (data) {
-        if (data.body.senderData.chatId === `${recipientNumber}@c.us`) {
+        const receiptId = data.receiptId;
+        await GreenAPI.deleteNotification(
+          idInstance,
+          apiTokenInstance,
+          receiptId
+        );
+        if (
+          data.body?.senderData?.chatId === `${recipientNumber}@c.us` &&
+          data.body?.messageData?.typeMessage === "textMessage"
+        ) {
           dispatch(
             createMessage({
               recipient: recipientNumber,
-              text: data.body.messageData.extendedTextMessageData.text,
+              text: data.body.messageData.textMessageData.textMessage,
               sender: data.body.senderData.sender,
               idMessage: data.body.idMessage,
             })
           );
         }
       }
-    } catch {
+    } catch (error) {
+      console.log(error);
       toast.error("Failed to get message");
     }
   };
