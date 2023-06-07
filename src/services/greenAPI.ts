@@ -52,10 +52,32 @@ const sendMessage = async (
   }
 };
 
+const getNotification = async (
+  idInstance: string,
+  apiTokenInstance: string
+) => {
+  const response = await axios.get(
+    `https://api.green-api.com/waInstance${idInstance}/ReceiveNotification/${apiTokenInstance}`
+  );
+  return response.data;
+};
+
+const deleteNotification = async (
+  idInstance: string,
+  apiTokenInstance: string
+) => {
+  const response = await axios.get(
+    `https://api.green-api.com/waInstance${idInstance}/ReceiveNotification/${apiTokenInstance}`
+  );
+  return response.data;
+};
+
 const greenAPI = {
   authorization,
   checkRecipient,
   sendMessage,
+  getNotification,
+  deleteNotification,
 };
 
 export default greenAPI;

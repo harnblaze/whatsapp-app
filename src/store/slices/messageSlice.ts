@@ -26,27 +26,49 @@ export const sendMessage =
     apiTokenInstance: string
   ) =>
   async (dispatch: AppDispatch) => {
-    const sending = toast.loading("sending...");
     try {
-      const response = await GreenAPI.sendMessage(
+      const data = await GreenAPI.sendMessage(
         recipientNumber,
         messageText,
         idInstance,
         apiTokenInstance
       );
-      console.log(response);
-      dispatch(
-        createMessage({
-          recipient: recipientNumber,
-          text: messageText,
-          sender: "Me",
-          idMessage: response.idMessage,
-        })
-      );
+      if (data) {
+        dispatch(
+          createMessage({
+            recipient: recipientNumber,
+            text: messageText,
+            sender: "Me",
+            idMessage: data.idMessage,
+          })
+        );
+      } else {
+        toast.error("Failed to send message");
+      }
     } catch {
       toast.error("Failed to send message");
-    } finally {
-      toast.dismiss(sending);
+    }
+  };
+
+export const getMessage =
+  (idInstance: string, apiTokenInstance: string, recipientNumber: string) =>
+  async (dispatch: AppDispatch) => {
+    try {
+      const data = await GreenAPI.getNotification(idInstance, apiTokenInstance);
+      if (data) {
+        if (data.body.senderData.chatId === `${recipientNumber}@c.us`) {
+          dispatch(
+            createMessage({
+              recipient: recipientNumber,
+              text: data.body.messageData.extendedTextMessageData.text,
+              sender: data.body.senderData.sender,
+              idMessage: data.body.idMessage,
+            })
+          );
+        }
+      }
+    } catch {
+      toast.error("Failed to get message");
     }
   };
 

@@ -24,18 +24,18 @@ export const addChat =
   async (dispatch: AppDispatch) => {
     const checking = toast.loading("Checking phone number...");
     try {
-      const response = await GreenAPI.checkRecipient(
+      const data = await GreenAPI.checkRecipient(
         recipientNumber,
         idInstance,
         apiTokenInstance
       );
-      if (response.existsWhatsapp) {
+      if (data.existsWhatsapp) {
         dispatch(createChat(recipientNumber));
       } else {
         toast.error("Wrong phone number");
       }
     } catch {
-      toast.error("Failed to check phone number");
+      toast.error("Wrong phone number");
     } finally {
       toast.dismiss(checking);
     }

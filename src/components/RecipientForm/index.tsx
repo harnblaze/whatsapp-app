@@ -34,7 +34,7 @@ const RecipientForm = () => {
       <Title>Create New Chat</Title>
       <Form onSubmit={handleSubmit}>
         <Input
-          placeholder="Recipient Number"
+          placeholder="Phone Number"
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
           required

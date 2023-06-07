@@ -34,7 +34,6 @@ export const signIn =
     const loading = toast.loading("Loading...");
     try {
       const data = await GreenAPI.authorization(idInstance, apiTokenInstance);
-      console.log(data);
       if (data.stateInstance === "authorized") {
         await dispatch(setCredentials({ idInstance, apiTokenInstance }));
       } else {
