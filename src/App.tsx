@@ -1,16 +1,12 @@
 import React from "react";
-import CredentialsForm from "./components/CredentialsForm";
-import RecipientForm from "./components/RecipientForm";
-import MessageForm from "./components/MessageForm";
-import Chat from "./components/Chat";
+import { Toaster } from "react-hot-toast";
+import AppRoutes from "./components/AppRoutes";
 
 function App() {
   return (
     <div className="App">
-      <CredentialsForm />
-      <RecipientForm />
-      <MessageForm recipientNumber={"sdasdasd"} />
-      <Chat recipientNumber={"sdasdasd"} />
+      <AppRoutes />
+      <Toaster />
     </div>
   );
 }

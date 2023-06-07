@@ -1,10 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppDispatch } from "../index";
 import GreenAPI from "../../services/greenAPI";
+import { toast } from "react-hot-toast";
 
 const initialState = {
-  idInstance: "" as string,
-  apiTokenInstance: "" as string,
+  isAuth: false,
+  idInstance: "",
+  apiTokenInstance: "",
 };
 
 export type userStateType = typeof initialState;
@@ -13,9 +15,13 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setCredentials: (state, action: PayloadAction<userStateType>) => {
+    setCredentials: (
+      state,
+      action: PayloadAction<Omit<userStateType, "isAuth">>
+    ) => {
       state.idInstance = action.payload.idInstance;
       state.apiTokenInstance = action.payload.apiTokenInstance;
+      state.isAuth = true;
     },
   },
 });
@@ -25,9 +31,19 @@ export const { setCredentials } = userSlice.actions;
 export const signIn =
   (idInstance: string, apiTokenInstance: string) =>
   async (dispatch: AppDispatch) => {
-    const data = await GreenAPI.authorization(idInstance, apiTokenInstance);
-    if (data.stateInstance === "authorized") {
-      dispatch(setCredentials({ idInstance, apiTokenInstance }));
+    const loading = toast.loading("Loading...");
+    try {
+      const data = await GreenAPI.authorization(idInstance, apiTokenInstance);
+      console.log(data);
+      if (data.stateInstance === "authorized") {
+        await dispatch(setCredentials({ idInstance, apiTokenInstance }));
+      } else {
+        toast.error("Failed to login");
+      }
+    } catch {
+      toast.error("Failed to login");
+    } finally {
+      toast.dismiss(loading);
     }
   };
 
