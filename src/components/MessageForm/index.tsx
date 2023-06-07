@@ -5,6 +5,7 @@ import Input from "../common/Input";
 import Container from "../common/Container";
 import Form from "../common/Form";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { useAppSelector } from "../../hooks/useAppSelector";
 
 interface MessageFromProps {
   recipientNumber: string;
@@ -13,10 +14,15 @@ interface MessageFromProps {
 const MessageForm: FC<MessageFromProps> = ({ recipientNumber }) => {
   const dispatch = useAppDispatch();
   const [messageText, setMessageText] = useState("");
+  const { idInstance, apiTokenInstance } = useAppSelector(
+    (state) => state.user
+  );
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(sendMessage({ recipientNumber, messageText }));
+    dispatch(
+      sendMessage(recipientNumber, messageText, idInstance, apiTokenInstance)
+    );
     setMessageText("");
   };
 

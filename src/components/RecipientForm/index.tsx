@@ -1,23 +1,33 @@
 import React, { FormEvent, useState } from "react";
-import { createChat } from "../../store/slices/chatSlice";
+import { addChat } from "../../store/slices/chatSlice";
 import Input from "../common/Input";
 import Button from "../common/Button";
 import Title from "../common/Title";
 import Container from "../common/Container";
 import Form from "../common/Form";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { useAppSelector } from "../../hooks/useAppSelector";
+import { useNavigate } from "react-router-dom";
 
 const RecipientForm = () => {
   const dispatch = useAppDispatch();
-  const [recipientNumber, setRecipientNumber] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const { idInstance, apiTokenInstance } = useAppSelector(
+    (state) => state.user
+  );
+  const recipientNumber = useAppSelector((state) => state.chat.recipientNumber);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (recipientNumber) {
-      dispatch(createChat(recipientNumber));
-      setRecipientNumber("");
+    if (phoneNumber) {
+      await dispatch(addChat(phoneNumber, idInstance, apiTokenInstance));
+      setPhoneNumber("");
     }
   };
+  if (recipientNumber !== "") {
+    navigate(`/chat/${recipientNumber}`);
+  }
 
   return (
     <Container>
@@ -25,8 +35,8 @@ const RecipientForm = () => {
       <Form onSubmit={handleSubmit}>
         <Input
           placeholder="Recipient Number"
-          value={recipientNumber}
-          onChange={(e) => setRecipientNumber(e.target.value)}
+          value={phoneNumber}
+          onChange={(e) => setPhoneNumber(e.target.value)}
           required
         />
         <Button>Create Chat</Button>

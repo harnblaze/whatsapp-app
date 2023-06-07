@@ -1,12 +1,13 @@
 import React, { FC } from "react";
 import styles from "./Chat.module.css";
 import { useAppSelector } from "../../hooks/useAppSelector";
+import MessageForm from "../MessageForm";
 
 interface ChatProps {
   recipientNumber: string;
 }
 
-const Chat: FC<ChatProps> = () => {
+const Chat: FC<ChatProps> = ({ recipientNumber }) => {
   const messages = useAppSelector((state) => state.message.entities);
 
   return (
@@ -25,6 +26,7 @@ const Chat: FC<ChatProps> = () => {
           </div>
         ))}
       </div>
+      <MessageForm recipientNumber={recipientNumber} />
     </div>
   );
 };

@@ -21,7 +21,7 @@ const checkRecipient = async (
     const response = await axios.post(
       `https://api.green-api.com/waInstance${idInstance}/CheckWhatsapp/${apiTokenInstance}`,
       {
-        phoneNumber: `7${phoneNumber}`,
+        phoneNumber,
       }
     );
     return response.data;
@@ -31,9 +31,31 @@ const checkRecipient = async (
   }
 };
 
+const sendMessage = async (
+  phoneNumber: string,
+  messageText: string,
+  idInstance: string,
+  apiTokenInstance: string
+) => {
+  try {
+    const response = await axios.post(
+      `https://api.green-api.com/waInstance${idInstance}/SendMessage/${apiTokenInstance}`,
+      {
+        chatId: `${phoneNumber}@c.us`,
+        message: `${messageText}`,
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error sending message", error);
+    throw error;
+  }
+};
+
 const greenAPI = {
   authorization,
   checkRecipient,
+  sendMessage,
 };
 
 export default greenAPI;
