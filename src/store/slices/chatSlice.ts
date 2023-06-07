@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppDispatch } from "../index";
 import { toast } from "react-hot-toast";
 import GreenAPI from "../../services/greenAPI";
@@ -11,7 +11,7 @@ const chatSlice = createSlice({
   name: "chat",
   initialState,
   reducers: {
-    createChat: (state, action) => {
+    createChat: (state, action: PayloadAction<string>) => {
       state.recipientNumber = action.payload;
     },
   },
@@ -22,18 +22,22 @@ export const { createChat } = chatSlice.actions;
 export const addChat =
   (recipientNumber: string, idInstance: string, apiTokenInstance: string) =>
   async (dispatch: AppDispatch) => {
-    const loading = toast.loading("Loading...");
+    const checking = toast.loading("Checking phone number...");
     try {
-      const data = await GreenAPI.checkRecipient(
+      const response = await GreenAPI.checkRecipient(
         recipientNumber,
         idInstance,
         apiTokenInstance
       );
-      console.log(data);
+      if (response.existsWhatsapp) {
+        dispatch(createChat(recipientNumber));
+      } else {
+        toast.error("Wrong phone number");
+      }
     } catch {
       toast.error("Failed to check phone number");
     } finally {
-      toast.dismiss(loading);
+      toast.dismiss(checking);
     }
   };
 
