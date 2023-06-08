@@ -1,13 +1,18 @@
 import React from "react";
 import styles from "./ContactsButton.module.css";
 import { TiUserAdd } from "react-icons/ti";
+import IconButton from "../../common/IconButton";
 
 const ContactsButton = () => {
+  const buttonClickHandle = () => {
+    console.log("click");
+  };
+
   return (
     <footer className={styles.footer}>
-      <button className={styles.button}>
-        <TiUserAdd className={styles.icon} /> <span>Добавить контакт</span>
-      </button>
+      <IconButton text={"Добавить контакт"} onClick={buttonClickHandle}>
+        <TiUserAdd className={styles.icon} />
+      </IconButton>
     </footer>
   );
 };

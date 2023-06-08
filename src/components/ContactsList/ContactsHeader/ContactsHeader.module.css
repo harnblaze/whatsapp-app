@@ -6,14 +6,6 @@
     background-color: rgb(240, 242, 245);
 }
 
-.button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 20px;
-    margin-left: 20px;
-}
-
 .buttons {
     display: flex;
     justify-content: center;
@@ -28,17 +20,11 @@
 .icon {
     width: 32px;
     height: 32px;
-    transition: 0.3s all;
 }
 
 .logo .icon {
-    width: 56px;
-    height: 56px;
-}
-
-.icon:hover {
-    transition: 0.3s all;
-    color: rgb(90 60 70);
+    width: 52px;
+    height: 52px;
 }
 
 @media (max-width: 480px) {

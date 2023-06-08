@@ -4,26 +4,27 @@ import { HiUserCircle, HiUserGroup } from "react-icons/hi";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { MdMessage } from "react-icons/md";
 import { TbCircleDashed } from "react-icons/tb";
+import IconButton from "../../common/IconButton";
 
 const ContactsHeader = () => {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
-        <button className={styles.button}>
+        <IconButton>
           <HiUserCircle className={styles.icon} />
-        </button>
+        </IconButton>
       </div>
       <div className={styles.buttons}>
         <div className={styles.icons}>
-          <button className={styles.button}>
+          <IconButton>
             <HiUserGroup className={styles.icon} />
-          </button>
-          <button className={styles.button}>
+          </IconButton>
+          <IconButton>
             <TbCircleDashed className={styles.icon} />
-          </button>
-          <button className={styles.button}>
+          </IconButton>
+          <IconButton>
             <MdMessage className={styles.icon} />
-          </button>
+          </IconButton>
         </div>
         <button className={styles.button}>
           <BsThreeDotsVertical className={styles.icon} />

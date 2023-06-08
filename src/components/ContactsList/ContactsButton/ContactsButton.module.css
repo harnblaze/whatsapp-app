@@ -6,26 +6,6 @@
     background-color: rgb(240, 242, 245);
 }
 
-.button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 20px;
-    margin-left: 20px;
-    transition: 0.3s all;
-}
-
-.icons {
-    display: flex;
-}
-
 .icon {
     width: 32px;
-    height: 32px;
-
-}
-
-.button:hover {
-    transition: 0.3s all;
-    color: rgb(90 60 70);
 }
