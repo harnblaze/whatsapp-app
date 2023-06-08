@@ -5,7 +5,7 @@ import ContactsEmpty from "./ContactsEmpty";
 import styles from "./ContactsList.module.css";
 import ContactsButton from "./ContactsButton";
 
-const ContactsList = () => {
+const ContactsSection = () => {
   return (
     <div className={styles.container}>
       <ContactsHeader />
@@ -16,4 +16,4 @@ const ContactsList = () => {
   );
 };
 
-export default ContactsList;
+export default ContactsSection;

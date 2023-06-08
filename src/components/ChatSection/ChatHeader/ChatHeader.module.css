@@ -3,6 +3,7 @@
     justify-content: space-between;
     align-items: center;
     height: 64px;
+    width: 100%;
     background-color: rgb(240, 242, 245);
 }
 
@@ -10,7 +11,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-shrink: 0;
 }
 
 .icons {
@@ -25,10 +25,4 @@
 .logo .icon {
     width: 52px;
     height: 52px;
-}
-
-@media (max-width: 480px) {
-    .icons {
-        display: none;
-    }
 }

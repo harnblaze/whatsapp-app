@@ -8,7 +8,7 @@ const ContactsSearch = () => {
     <div className={styles.container}>
       <div className={styles.search}>
         <AiOutlineSearch className={styles.icon} />
-        <input placeholder={"Поиск"} className={styles.input} />
+        <input placeholder={"Search"} className={styles.input} />
       </div>
       <button className={styles.button}>
         <CgSortAz className={styles.icon} />

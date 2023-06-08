@@ -1,12 +1,14 @@
 import React from "react";
-import RecipientForm from "../components/RecipientForm";
-import { useAppSelector } from "../hooks/useAppSelector";
-import Chat from "../components/Chat";
+import ContactsSection from "../components/ContactsSection";
+import { Outlet } from "react-router-dom";
 
 const MainPage = () => {
-  const { recipientNumber } = useAppSelector((state) => state.chat);
-  if (recipientNumber === "") return <RecipientForm />;
-  return <Chat recipientNumber={recipientNumber} />;
+  return (
+    <div style={{ display: "flex" }}>
+      <ContactsSection />
+      <Outlet />
+    </div>
+  );
 };
 
 export default MainPage;

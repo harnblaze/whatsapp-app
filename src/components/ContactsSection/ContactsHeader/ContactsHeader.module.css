@@ -1,0 +1,36 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+    width: 100%;
+    background-color: rgb(240, 242, 245);
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.icons {
+    display: flex;
+}
+
+.icon {
+    width: 32px;
+    height: 32px;
+}
+
+.logo .icon {
+    width: 52px;
+    height: 52px;
+}
+
+
+@media (max-width: 480px) {
+    .icons {
+        display: none;
+    }
+}

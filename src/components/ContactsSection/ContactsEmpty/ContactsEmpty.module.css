@@ -1,0 +1,13 @@
+.container {
+    width: 100%;
+    height: calc(100% - 64px - 64px - 50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    width: 120px;
+    height: 120px;
+}

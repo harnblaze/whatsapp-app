@@ -6,7 +6,7 @@ const ContactsEmpty = () => {
   return (
     <div className={styles.container}>
       <MdPermContactCalendar className={styles.icon} />
-      <span>Список контактов пуст</span>
+      <span>Contact list is empty</span>
     </div>
   );
 };
