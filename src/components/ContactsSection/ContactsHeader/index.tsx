@@ -25,10 +25,10 @@ const ContactsHeader = () => {
           <IconButton>
             <MdMessage className={styles.icon} />
           </IconButton>
+          <IconButton>
+            <BsThreeDotsVertical className={styles.icon} />
+          </IconButton>
         </div>
-        <button className={styles.button}>
-          <BsThreeDotsVertical className={styles.icon} />
-        </button>
       </div>
     </header>
   );
