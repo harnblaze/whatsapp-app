@@ -1,0 +1,25 @@
+.container {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.search {
+    background-color: rgb(230, 230, 230);
+    border-radius: 12px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 20px;
+}
+
+.input {
+    width: 100%;
+}
+
+.icon {
+    width: 24px;
+    margin-right: 10px;
+}
