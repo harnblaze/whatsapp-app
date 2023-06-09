@@ -10,11 +10,11 @@ const AppRoutes = () => {
   const isAuth = useAppSelector((state) => state.user.isAuth);
   return isAuth ? (
     <Routes>
-      <Route path="/main" element={<MainPage />}>
+      <Route path="/" element={<MainPage />}>
         <Route path="/chat" element={<ChatSection />} />
         <Route path="/add" element={<RecipientForm />} />
       </Route>
-      <Route path="/*" element={<Navigate to="/main" />} />
+      <Route path="/*" element={<Navigate to="/" />} />
     </Routes>
   ) : (
     <Routes>
