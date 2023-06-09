@@ -2,22 +2,30 @@ import styles from "./Input.module.css";
 import React, { ChangeEventHandler, FC } from "react";
 
 export interface InputProps {
+  type: string;
   placeholder: string;
   value: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
   required: boolean;
 }
 
-const Input: FC<InputProps> = ({ placeholder, value, onChange, required }) => {
+const Input: FC<InputProps> = ({
+  type,
+  placeholder,
+  value,
+  onChange,
+  required,
+}) => {
   return (
-    <input
-      type="text"
-      placeholder={placeholder}
-      className={styles.input}
-      value={value}
-      onChange={onChange}
-      required={required}
-    />
+    <div className={styles.input}>
+      <input
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        required={required}
+      />
+    </div>
   );
 };
 

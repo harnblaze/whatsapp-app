@@ -26,12 +26,14 @@ const CredentialsForm = () => {
       <Title>WhatsApp Web</Title>
       <Form onSubmit={handleSubmit}>
         <Input
+          type={"text"}
           placeholder="ID Instance"
           value={idInstance}
           onChange={(e) => setIdInstance(e.target.value)}
           required
         />
         <Input
+          type={"password"}
           placeholder="API Token Instance"
           value={apiTokenInstance}
           onChange={(e) => setApiTokenInstance(e.target.value)}

@@ -7,6 +7,7 @@ import { useAppSelector } from "../../hooks/useAppSelector";
 import { useNavigate } from "react-router-dom";
 import styles from "./RecipientForm.module.css";
 import Button from "../common/Button";
+import Input from "../common/Input";
 
 const RecipientForm = () => {
   const dispatch = useAppDispatch();
@@ -29,15 +30,13 @@ const RecipientForm = () => {
     <Container>
       <Title>Create New Chat</Title>
       <form onSubmit={handleSubmit} className={styles.form}>
-        <div className={styles.message}>
-          <input
-            className={styles.input}
-            placeholder="Phone Number"
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-            required
-          />
-        </div>
+        <Input
+          type={"text"}
+          placeholder="Phone Number"
+          value={phoneNumber}
+          onChange={(e) => setPhoneNumber(e.target.value)}
+          required
+        />
 
         <Button>Create Chat</Button>
       </form>
