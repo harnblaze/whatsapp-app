@@ -10,7 +10,7 @@ const AppRoutes = () => {
   const isAuth = useAppSelector((state) => state.user.isAuth);
   return isAuth ? (
     <Routes>
-      <Route path="/" element={<MainPage />}>
+      <Route path="/whatsapp-app" element={<MainPage />}>
         <Route path="/chat" element={<ChatSection />} />
         <Route path="/add" element={<RecipientForm />} />
       </Route>
@@ -18,8 +18,8 @@ const AppRoutes = () => {
     </Routes>
   ) : (
     <Routes>
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/*" element={<Navigate to="/login" />} />
+      <Route path="whatsapp-app/login" element={<LoginPage />} />
+      <Route path="*" element={<Navigate to="/login" />} />
     </Routes>
   );
 };
