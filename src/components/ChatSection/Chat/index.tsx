@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from "react";
 import styles from "./Chat.module.css";
 import { useAppSelector } from "../../../hooks/useAppSelector";
-import MessageForm from "../../MessageForm";
+import ChatMessage from "../ChatMessage";
 import { useAppDispatch } from "../../../hooks/useAppDispatch";
 import { getMessage } from "../../../store/slices/messageSlice";
 
@@ -18,7 +18,7 @@ const Chat: FC<ChatProps> = ({ recipientNumber }) => {
   useEffect(() => {
     const interval = setInterval(
       () => dispatch(getMessage(idInstance, apiTokenInstance, recipientNumber)),
-      10000
+      100000
     );
     return () => {
       clearInterval(interval);
@@ -41,7 +41,7 @@ const Chat: FC<ChatProps> = ({ recipientNumber }) => {
           </div>
         ))}
       </div>
-      <MessageForm recipientNumber={recipientNumber} />
+      <ChatMessage recipientNumber={recipientNumber} />
     </div>
   );
 };

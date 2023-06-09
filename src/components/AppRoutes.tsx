@@ -11,7 +11,7 @@ const AppRoutes = () => {
   return isAuth ? (
     <Routes>
       <Route path="/" element={<MainPage />}>
-        <Route path="/" element={<ChatSection />} />
+        <Route path="/chat" element={<ChatSection />} />
         <Route path="/add" element={<RecipientForm />} />
       </Route>
       <Route path="*" element={<Navigate to="/" />} />

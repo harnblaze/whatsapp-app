@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import { addChat } from "../../store/slices/chatSlice";
 import Input from "../common/Input";
 import Button from "../common/Button";
@@ -20,14 +20,15 @@ const RecipientForm = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (phoneNumber) {
-      await dispatch(addChat(phoneNumber, idInstance, apiTokenInstance));
-      setPhoneNumber("");
-    }
+
+    await dispatch(addChat(phoneNumber, idInstance, apiTokenInstance));
+    setPhoneNumber("");
   };
-  if (recipientNumber !== "") {
-    navigate(`/chat/${recipientNumber}`);
-  }
+  useEffect(() => {
+    if (recipientNumber !== "") {
+      navigate(`/chat`);
+    }
+  }, [recipientNumber, navigate]);
 
   return (
     <Container>

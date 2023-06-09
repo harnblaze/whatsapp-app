@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 64px;
+    width: 100%;
+    background-color: rgb(240, 242, 245);
+}
+
+.form {
+    width: 100%;
+    display: flex;
+    padding: 0 15px;
+}
+
+.message {
+    background-color: #ffffff;
+    border-radius: 12px;
+    width: 100%;
+    display: flex;
+    padding: 5px 20px;
+    margin: 0 15px;
+}
+
+.icon {
+    width: 32px;
+    height: 32px;
+}

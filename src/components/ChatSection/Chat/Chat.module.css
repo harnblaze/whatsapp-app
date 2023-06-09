@@ -14,6 +14,9 @@
     padding: 20px;
     flex-grow: 1;
     overflow-y: auto;
+    background-color: #eaeaea;
+    background-repeat: repeat;
+    background-image: url('../../../../public/background.png');
 }
 
 .message {
