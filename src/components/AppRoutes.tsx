@@ -10,16 +10,16 @@ const AppRoutes = () => {
   const isAuth = useAppSelector((state) => state.user.isAuth);
   return isAuth ? (
     <Routes>
-      <Route path="/" element={<MainPage />}>
+      <Route path="/main" element={<MainPage />}>
         <Route path="/chat" element={<ChatSection />} />
         <Route path="/add" element={<RecipientForm />} />
       </Route>
-      <Route path="*" element={<Navigate to="/" />} />
+      <Route path="/*" element={<Navigate to="/main" />} />
     </Routes>
   ) : (
     <Routes>
       <Route path="/login" element={<LoginPage />} />
-      <Route path="*" element={<Navigate to="/login" />} />
+      <Route path="/*" element={<Navigate to="/login" />} />
     </Routes>
   );
 };
