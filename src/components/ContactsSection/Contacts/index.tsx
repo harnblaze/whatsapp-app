@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useMemo } from "react";
 import styles from "./Contacts.module.css";
-import { HiUserCircle } from "react-icons/hi";
 import { useAppSelector } from "../../../hooks/useAppSelector";
 import { SlArrowDown } from "react-icons/sl";
 import IconButton from "../../common/IconButton";
@@ -14,9 +13,17 @@ const Contacts = () => {
     navigate("/chat");
   };
 
+  const recipientImage = useMemo(
+    () =>
+      `https://avatars.dicebear.com/api/avataaars/${recipientNumber.substring(
+        7
+      )}.svg`,
+    [recipientNumber]
+  );
+
   return (
     <div className={styles.container} onClick={ClickHandle}>
-      <HiUserCircle className={styles.icon} />
+      <img className={styles.icon} alt={"avatar"} src={recipientImage} />
       <h2>+{recipientNumber}</h2>
       <div className={styles.button}>
         <IconButton>
