@@ -18,7 +18,7 @@ const Chat: FC<ChatProps> = ({ recipientNumber }) => {
   useEffect(() => {
     const interval = setInterval(
       () => dispatch(getMessage(idInstance, apiTokenInstance, recipientNumber)),
-      100000
+      5000
     );
     return () => {
       clearInterval(interval);
