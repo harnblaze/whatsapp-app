@@ -3,6 +3,6 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: start;
     border-right: rgb(200, 200, 200) solid 1px;
 }
