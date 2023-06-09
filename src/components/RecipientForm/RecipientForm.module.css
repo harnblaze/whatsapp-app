@@ -1,0 +1,18 @@
+.form {
+    display: flex;
+    padding: 0 15px;
+    flex-direction: column;
+}
+
+.message {
+    background-color: rgb(240, 242, 245);
+    border-radius: 12px;
+    width: 100%;
+    display: flex;
+    padding: 5px 20px;
+}
+
+.icon {
+    width: 32px;
+    height: 32px;
+}

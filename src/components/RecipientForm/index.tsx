@@ -1,13 +1,12 @@
 import React, { FormEvent, useState } from "react";
 import { addChat } from "../../store/slices/chatSlice";
-import Input from "../common/Input";
-import Button from "../common/Button";
 import Title from "../common/Title";
 import Container from "../common/Container";
-import Form from "../common/Form";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { useAppSelector } from "../../hooks/useAppSelector";
 import { useNavigate } from "react-router-dom";
+import styles from "./RecipientForm.module.css";
+import Button from "../common/Button";
 
 const RecipientForm = () => {
   const dispatch = useAppDispatch();
@@ -29,15 +28,19 @@ const RecipientForm = () => {
   return (
     <Container>
       <Title>Create New Chat</Title>
-      <Form onSubmit={handleSubmit}>
-        <Input
-          placeholder="Phone Number"
-          value={phoneNumber}
-          onChange={(e) => setPhoneNumber(e.target.value)}
-          required
-        />
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <div className={styles.message}>
+          <input
+            className={styles.input}
+            placeholder="Phone Number"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+            required
+          />
+        </div>
+
         <Button>Create Chat</Button>
-      </Form>
+      </form>
     </Container>
   );
 };
