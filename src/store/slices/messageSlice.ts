@@ -15,6 +15,9 @@ const messageSlice = createSlice({
     createMessage: (state, action: PayloadAction<IMessage>) => {
       state.entities.push(action.payload);
     },
+    resetMessages: (state) => {
+      state.entities = [];
+    },
   },
 });
 
@@ -82,6 +85,6 @@ export const getMessage =
     }
   };
 
-export const { createMessage } = messageSlice.actions;
+export const { createMessage, resetMessages } = messageSlice.actions;
 
 export default messageSlice.reducer;
